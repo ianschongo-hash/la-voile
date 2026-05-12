@@ -1,4 +1,5 @@
 import React from 'react';
+import logoImg from './PHOTO-2026-05-11-12-18-00-removebg-preview.png';
 
 interface LogoMarkProps {
   size?: number;
@@ -6,11 +7,11 @@ interface LogoMarkProps {
 }
 
 export function LogoMark({ size = 44, className = '' }: LogoMarkProps) {
-  return <img src="/logo.png" alt="La Voile Capital" width={size} height={size} className={className} style={{ objectFit: 'contain' }} />;
+  return <img src={logoImg} alt="La Voile Capital" width={size} height={size} className={className} style={{ objectFit: 'contain' }} />;
 }
 
 export function LogoFull({ width = 220 }: { width?: number }) {
-  return <img src="/logo.png" alt="La Voile Capital" width={width} style={{ objectFit: 'contain' }} />;
+  return <img src={logoImg} alt="La Voile Capital" width={width} style={{ objectFit: 'contain' }} />;
 }
 
 export function LogoFooter({ width = 180 }: { width?: number }) {
