@@ -15,7 +15,7 @@ const serviceOptions = [
 ];
 
 export default function Contact() {
-  const formRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef(null);
   useFadeIn(formRef);
 
   const [form, setForm] = useState({
@@ -57,192 +57,155 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="bg-[#141414] px-16 py-28 relative overflow-hidden">
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            'repeating-linear-gradient(-45deg,rgba(255,255,255,0.012) 0,rgba(255,255,255,0.012) 1px,transparent 0,transparent 50%)',
-          backgroundSize: '28px 28px',
-        }}
-      />
-      <div className="relative z-10 grid gap-24 items-start" style={{ gridTemplateColumns: '1fr 1.2fr' }}>
-        {/* Info column */}
-        <div>
-          <div className="flex items-center gap-4 text-[0.68rem] font-bold tracking-[0.28em] uppercase text-white/50 mb-5">
-            <span className="w-7 h-0.5 bg-white/30" />
-            Contact Us
-          </div>
-          <h2 className="font-serif text-[clamp(2.4rem,4.5vw,3.8rem)] font-bold leading-[1.1] mb-6">
-            Let's talk<br />about your <em className="italic font-semibold text-white/70">move</em>
-          </h2>
-          <p className="text-[0.95rem] text-white/65 max-w-xl leading-[1.95] mb-12">
-            Whether you're still planning or ready to start — reach out. A conversation costs nothing and clarity is priceless.
-          </p>
+    <section id="contact" className="py-24 bg-neutral-950 text-white overflow-x-hidden">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
 
-          {[
-            {
-              icon: <MapPin size={20} strokeWidth={1.75} />,
-              label: 'Location',
-              value: 'Dubai, United Arab Emirates',
-              sub: 'Available for in-person meetings',
-            },
-            {
-              icon: <Mail size={20} strokeWidth={1.75} />,
-              label: 'Email',
-              value: 'hello@lavoilecapital.com',
-              sub: 'Response within 24 hours',
-            },
-            {
-              icon: <Phone size={20} strokeWidth={1.75} />,
-              label: 'WhatsApp & Phone',
-              value: '+971 XX XXX XXXX',
-              sub: 'Available in DE · FR · IT · EN',
-            },
-          ].map(item => (
-            <div key={item.label} className="flex gap-6 items-start py-7 border-b border-white/10 last:border-b-0">
-              <div className="w-[46px] h-[46px] border border-white/15 flex items-center justify-center text-white flex-shrink-0">
-                {item.icon}
-              </div>
-              <div>
-                <div className="text-[0.65rem] font-bold tracking-[0.14em] uppercase text-white/30 mb-1.5">{item.label}</div>
-                <div className="text-[0.95rem] font-medium text-white">{item.value}</div>
-                <div className="text-[0.8rem] text-white/65 mt-0.5">{item.sub}</div>
-              </div>
+          {/* Info column */}
+          <div>
+            <p className="text-xs tracking-[0.2em] uppercase text-neutral-500 flex items-center gap-3 mb-6">
+              <span className="w-8 h-px bg-neutral-700 inline-block" /> Contact Us
+            </p>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
+              Let's talk<br />
+              <em className="italic font-normal text-neutral-400">about your move</em>
+            </h2>
+            <p className="text-neutral-400 mb-10 leading-relaxed">
+              Whether you're still planning or ready to start — reach out. A conversation costs nothing and clarity is priceless.
+            </p>
+
+            <div className="flex flex-col gap-6 mb-10">
+              {[
+                { icon: <MapPin size={18} />, label: 'Location', value: 'Dubai, United Arab Emirates', sub: 'Available for in-person meetings' },
+                { icon: <Mail size={18} />, label: 'Email', value: 'hello@lavoilecapital.com', sub: 'Response within 24 hours' },
+                { icon: <Phone size={18} />, label: 'WhatsApp & Phone', value: '+971 XX XXX XXXX', sub: 'Available in DE · FR · IT · EN' },
+              ].map(item => (
+                <div key={item.label} className="flex items-start gap-4">
+                  <div className="w-10 h-10 border border-white/15 flex items-center justify-center text-white/50 shrink-0">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <p className="text-xs tracking-widest uppercase text-neutral-500 mb-0.5">{item.label}</p>
+                    <p className="text-white font-medium">{item.value}</p>
+                    <p className="text-xs text-neutral-500">{item.sub}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
 
-          <div className="flex gap-3 mt-10 flex-wrap">
-            {[
-              { icon: <Instagram size={15} strokeWidth={1.75} />, label: 'Instagram' },
-              { icon: <Linkedin size={15} strokeWidth={1.75} />, label: 'LinkedIn' },
-            ].map(s => (
-              <a
-                key={s.label}
-                href="#"
-                className="flex items-center gap-2.5 px-5 py-3 border border-white/20 text-white/65 text-[0.72rem] font-semibold tracking-[0.12em] uppercase hover:border-white/50 hover:text-white transition-all no-underline"
-              >
-                {s.icon}
-                {s.label}
-              </a>
-            ))}
-          </div>
+            <div className="flex gap-3 mb-8">
+              {[
+                { icon: <Instagram size={16} />, label: 'Instagram' },
+                { icon: <Linkedin size={16} />, label: 'LinkedIn' },
+              ].map(s => (
+                <a key={s.label} href="#" className="flex items-center gap-2 border border-white/15 px-4 py-2 text-xs text-neutral-400 hover:text-white hover:border-white/40 transition-colors">
+                  {s.icon} {s.label}
+                </a>
+              ))}
+            </div>
 
-          <div className="mt-10 flex items-center gap-4 p-6 border border-white/12 bg-white/[0.04]">
-            <SwissCross size={40} />
-            <div>
-              <div className="text-[0.65rem] font-bold tracking-[0.14em] uppercase text-white/30 mb-0.5">
-                Swiss Founded Company
-              </div>
-              <div className="text-[0.85rem] font-medium text-white/65">
-                German · French · Italian · English
-              </div>
+            <div className="flex items-center gap-3 text-xs text-neutral-600">
+              <SwissCross size={14} color="currentColor" />
+              <span>Swiss Founded Company</span>
+              <span className="text-neutral-700">·</span>
+              <span>German · French · Italian · English</span>
             </div>
           </div>
-        </div>
 
-        {/* Form column */}
-        <div
-          ref={formRef}
-          className="bg-[#0A0A0A] border border-white/12 p-12 opacity-0 transition-all duration-700"
-        >
-          {!submitted ? (
-            <form onSubmit={handleSubmit}>
-              <h3 className="font-serif text-[2rem] font-bold mb-2">Send us a message</h3>
-              <p className="text-[0.85rem] text-white/65 mb-10 leading-[1.75]">
-                Fill in the form and we'll get back to you within one business day — in your preferred language.
-              </p>
+          {/* Form column */}
+          <div ref={formRef}>
+            {!submitted ? (
+              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                <div>
+                  <h3 className="text-xl font-serif font-bold mb-2">Send us a message</h3>
+                  <p className="text-sm text-neutral-400">Fill in the form and we'll get back to you within one business day — in your preferred language.</p>
+                </div>
 
-              <div className="grid grid-cols-2 gap-4 mb-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-xs text-neutral-400 tracking-wide">First Name</label>
+                    <input
+                      type="text"
+                      value={form.firstName}
+                      onChange={e => update('firstName', e.target.value)}
+                      className="bg-white/[0.04] border border-white/[0.12] text-white px-4 py-3.5 text-[0.9rem] outline-none focus:border-white/50 transition-colors w-full font-sans"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-xs text-neutral-400 tracking-wide">Last Name</label>
+                    <input
+                      type="text"
+                      value={form.lastName}
+                      onChange={e => update('lastName', e.target.value)}
+                      className="bg-white/[0.04] border border-white/[0.12] text-white px-4 py-3.5 text-[0.9rem] outline-none focus:border-white/50 transition-colors w-full font-sans"
+                    />
+                  </div>
+                </div>
+
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[0.65rem] font-bold tracking-[0.14em] uppercase text-white/30">First Name</label>
+                  <label className="text-xs text-neutral-400 tracking-wide">Email Address</label>
                   <input
-                    type="text"
-                    placeholder="Jean"
-                    value={form.firstName}
-                    onChange={e => update('firstName', e.target.value)}
-                    className="bg-white/[0.04] border border-white/12 text-white px-4 py-3.5 text-[0.9rem] outline-none focus:border-white/50 transition-colors w-full font-sans"
+                    type="email"
+                    value={form.email}
+                    onChange={e => update('email', e.target.value)}
+                    className="bg-white/[0.04] border border-white/[0.12] text-white px-4 py-3.5 text-[0.9rem] outline-none focus:border-white/50 transition-colors w-full font-sans"
                   />
                 </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-xs text-neutral-400 tracking-wide">Preferred Language</label>
+                    <select
+                      value={form.language}
+                      onChange={e => update('language', e.target.value)}
+                      className="bg-neutral-900 border border-white/[0.12] text-white px-4 py-3.5 text-[0.9rem] outline-none focus:border-white/50 transition-colors w-full font-sans appearance-none"
+                    >
+                      <option value="">Select language...</option>
+                      {languages.map(l => <option key={l} value={l}>{l}</option>)}
+                    </select>
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-xs text-neutral-400 tracking-wide">I am interested in</label>
+                    <select
+                      value={form.service}
+                      onChange={e => update('service', e.target.value)}
+                      className="bg-neutral-900 border border-white/[0.12] text-white px-4 py-3.5 text-[0.9rem] outline-none focus:border-white/50 transition-colors w-full font-sans appearance-none"
+                    >
+                      <option value="">Select a service...</option>
+                      {serviceOptions.map(o => <option key={o} value={o}>{o}</option>)}
+                    </select>
+                  </div>
+                </div>
+
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[0.65rem] font-bold tracking-[0.14em] uppercase text-white/30">Last Name</label>
-                  <input
-                    type="text"
-                    placeholder="Müller"
-                    value={form.lastName}
-                    onChange={e => update('lastName', e.target.value)}
-                    className="bg-white/[0.04] border border-white/12 text-white px-4 py-3.5 text-[0.9rem] outline-none focus:border-white/50 transition-colors w-full font-sans"
+                  <label className="text-xs text-neutral-400 tracking-wide">Your Message</label>
+                  <textarea
+                    value={form.message}
+                    onChange={e => update('message', e.target.value)}
+                    rows={4}
+                    className="bg-white/[0.04] border border-white/[0.12] text-white px-4 py-3.5 text-[0.9rem] outline-none focus:border-white/50 transition-colors w-full font-sans resize-y"
                   />
                 </div>
-              </div>
 
-              <div className="flex flex-col gap-1.5 mb-4">
-                <label className="text-[0.65rem] font-bold tracking-[0.14em] uppercase text-white/30">Email Address</label>
-                <input
-                  type="email"
-                  placeholder="jean.muller@email.com"
-                  value={form.email}
-                  onChange={e => update('email', e.target.value)}
-                  className="bg-white/[0.04] border border-white/12 text-white px-4 py-3.5 text-[0.9rem] outline-none focus:border-white/50 transition-colors w-full font-sans"
-                />
-              </div>
+                {error && <p className="text-red-400 text-sm">{error}</p>}
 
-              <div className="flex flex-col gap-1.5 mb-4">
-                <label className="text-[0.65rem] font-bold tracking-[0.14em] uppercase text-white/30">Preferred Language</label>
-                <select
-                  value={form.language}
-                  onChange={e => update('language', e.target.value)}
-                  className="bg-white/[0.04] border border-white/12 text-white px-4 py-3.5 text-[0.9rem] outline-none focus:border-white/50 transition-colors w-full font-sans appearance-none"
-                  style={{ background: 'rgba(255,255,255,0.04)' }}
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="bg-white text-neutral-950 px-8 py-4 text-sm font-semibold tracking-wide hover:bg-neutral-200 transition-colors disabled:opacity-50"
                 >
-                  <option value="" style={{ background: '#141414' }}>Select language...</option>
-                  {languages.map(l => <option key={l} style={{ background: '#141414' }}>{l}</option>)}
-                </select>
+                  {submitting ? 'Sending...' : 'Send Message →'}
+                </button>
+              </form>
+            ) : (
+              <div className="flex flex-col items-center justify-center h-full gap-6 py-16 text-center">
+                <CheckCircle size={48} className="text-white/60" />
+                <h3 className="text-2xl font-serif font-bold">Message received</h3>
+                <p className="text-neutral-400 max-w-sm">Thank you for reaching out. We'll be in touch within one business day in your preferred language.</p>
               </div>
+            )}
+          </div>
 
-              <div className="flex flex-col gap-1.5 mb-4">
-                <label className="text-[0.65rem] font-bold tracking-[0.14em] uppercase text-white/30">I am interested in</label>
-                <select
-                  value={form.service}
-                  onChange={e => update('service', e.target.value)}
-                  className="bg-white/[0.04] border border-white/12 text-white px-4 py-3.5 text-[0.9rem] outline-none focus:border-white/50 transition-colors w-full font-sans appearance-none"
-                  style={{ background: 'rgba(255,255,255,0.04)' }}
-                >
-                  <option value="" style={{ background: '#141414' }}>Select a service...</option>
-                  {serviceOptions.map(o => <option key={o} style={{ background: '#141414' }}>{o}</option>)}
-                </select>
-              </div>
-
-              <div className="flex flex-col gap-1.5 mb-2">
-                <label className="text-[0.65rem] font-bold tracking-[0.14em] uppercase text-white/30">Your Message</label>
-                <textarea
-                  placeholder="Tell us about your situation and goals..."
-                  value={form.message}
-                  onChange={e => update('message', e.target.value)}
-                  rows={4}
-                  className="bg-white/[0.04] border border-white/12 text-white px-4 py-3.5 text-[0.9rem] outline-none focus:border-white/50 transition-colors w-full font-sans resize-y"
-                />
-              </div>
-
-              {error && <p className="text-red-400 text-[0.8rem] mb-3">{error}</p>}
-
-              <button
-                type="submit"
-                disabled={submitting}
-                className="w-full py-4 bg-white text-black font-sans text-xs font-bold tracking-[0.18em] uppercase border-none cursor-pointer hover:bg-white/85 hover:-translate-y-0.5 transition-all mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
-              >
-                {submitting ? 'Sending...' : 'Send Message →'}
-              </button>
-            </form>
-          ) : (
-            <div className="flex flex-col items-center justify-center text-center py-16">
-              <CheckCircle size={52} strokeWidth={1.5} className="text-white mb-6" />
-              <h3 className="font-serif text-[1.8rem] font-bold mb-2">Message received</h3>
-              <p className="text-[0.9rem] text-white/65">
-                Thank you for reaching out. We'll be in touch within one business day in your preferred language.
-              </p>
-            </div>
-          )}
         </div>
       </div>
     </section>
