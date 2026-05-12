@@ -1,6 +1,5 @@
 import React from 'react';
-import logoImg from '../../PHOTO-2026-05-11-12-18-00-removebg-preview.png';
-
+import logoImg from './logo.png';
 interface LogoMarkProps {
   size?: number;
   className?: string;
